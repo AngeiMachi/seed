@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Client } from '../../../model/model';
+import { ScaleType } from '@swimlane/ngx-charts';
 
 @Component({
   selector: 'app-most-common-hobbies',
@@ -29,7 +30,10 @@ export class MostCommonHobbiesComponent implements OnInit{
       'yellow',
       'green',
       'blue',
-    ]
+    ],
+    name: 'custom',
+    selectable: true,
+    group: ScaleType.Ordinal,
   };
 
   ngOnInit(): void {

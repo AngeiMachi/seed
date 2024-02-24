@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Client, Gender } from '../../../model/model';
+import { ScaleType } from '@swimlane/ngx-charts';
 
 @Component({
   selector: 'app-most-picked-engine',
@@ -28,9 +29,11 @@ export class MostPickedEngineComponent implements OnInit {
     domain: [
       'green',
       'black',
-    ]
+    ],
+    name: 'custom',
+    selectable: true,
+    group: ScaleType.Ordinal,
   };
-  
   ngOnInit(): void {
     this.groupMostPickedEngineByGender();
     this.calculateEngineCount(this.genders[0]);

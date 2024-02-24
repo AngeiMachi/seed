@@ -4,7 +4,7 @@
     </div>
     <mat-form-field>
         <mat-label>Select age</mat-label>
-        <select matNativeControl required  (change)="onSelectAge($event.target.value)">
+        <select matNativeControl required  (change)="onSelectAge($event)">
           <option *ngFor="let age of ages" [value]="age">{{age}}</option>
         </select>
     </mat-form-field>

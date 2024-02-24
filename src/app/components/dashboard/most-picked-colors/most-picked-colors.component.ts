@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Client } from '../../../model/model';
+import { ScaleType } from '@swimlane/ngx-charts';
 
 @Component({
   selector: 'app-most-picked-colors',
@@ -29,7 +30,10 @@ export class MostPickedColorsComponent implements OnInit{
 
   colorScheme = {
     domain: [
-    ]
+    ],
+    name: 'custom',
+    selectable: true,
+    group: ScaleType.Ordinal,
   };
   colorScemeSet= new Set<string>();
 
@@ -84,7 +88,8 @@ export class MostPickedColorsComponent implements OnInit{
     this.colorScheme.domain = Array.from(this.colorScemeSet) as never[];
   }
 
-  onSelectAge(age: string) {
+  onSelectAge(event: any) {
+    const age = event.target.value || 0;
     this.calculateColorCounts(+age);
   }
 
