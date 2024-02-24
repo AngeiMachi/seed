@@ -1,0 +1,24 @@
+<div class="containter">
+    <div>
+        <h1>Most picked engine by gender</h1>
+    </div>
+    <mat-form-field>
+        <mat-label>Select age</mat-label>
+        <select matNativeControl required  (change)="onSelectGender($event)">
+          <option *ngFor="let gender of genders" [value]="gender">{{gender}}</option>
+        </select>
+    </mat-form-field>
+  
+    <ngx-charts-bar-vertical class="chart"  
+    [view]="view"
+    [scheme]="colorScheme"
+    [results]="EngineTypeCount"
+    [gradient]="gradient"
+    [xAxis]="showXAxis"
+    [yAxis]="showYAxis"
+    [showXAxisLabel]="showXAxisLabel"
+    [xAxisLabel]="xAxisLabel"
+    [yAxisLabel]="'Count'"
+    >
+    </ngx-charts-bar-vertical>
+</div>

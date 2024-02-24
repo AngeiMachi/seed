@@ -1,0 +1,18 @@
+<div class="containter">
+    <div>
+        <h1>Most common hobbies</h1>
+    </div>
+
+    <ngx-charts-bar-vertical class="chart"  
+            [view]="view"
+            [scheme]="colorScheme"
+            [results]="topHobbies"
+            [gradient]="gradient"
+            [xAxis]="showXAxis"
+            [yAxis]="showYAxis"
+            [showXAxisLabel]="showXAxisLabel"
+            [xAxisLabel]="xAxisLabel"
+            [yAxisLabel]="yAxisLabel"
+            >
+    </ngx-charts-bar-vertical>
+</div>

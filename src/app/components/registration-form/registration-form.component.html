@@ -1,0 +1,111 @@
+<div class="container">
+    <mat-card class="main">
+        <div class="registration-card" *ngIf="!isSubmitted">
+            <h2>Let's get you a car 😊</h2>
+            <mat-stepper orientation="vertical" [linear]="true" #stepper>
+                <mat-step [stepControl]="firstFormGroup">
+                    <form [formGroup]="firstFormGroup" class="personal-info">
+                        <ng-template matStepLabel>Personal Details</ng-template>
+                        <mat-form-field class="form-group">
+                            <input matInput placeholder="Full Name" formControlName="fullName">
+                            <mat-error *ngIf="fullName?.invalid && (fullName?.dirty || fullName?.touched)">Full Name is required.</mat-error>
+                        </mat-form-field>
+                        <mat-form-field class="form-group">
+                            <mat-select placeholder="Gender" formControlName="gender">
+                            <mat-option value="Male">Male</mat-option>
+                            <mat-option value="Female">Female</mat-option>
+                            <mat-option value="Other">Other</mat-option>
+                            </mat-select>
+                            <mat-error *ngIf="gender?.invalid && (gender?.dirty || gender?.touched)">Gender is required.</mat-error>
+                        </mat-form-field>
+                        <mat-form-field class="form-group">
+                            <input matInput [matDatepicker]="picker" placeholder="Birth Date" formControlName="birthdate" (dateInput)="validateDate($event)">
+                            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                            <mat-datepicker #picker [startView]="'year'" [startAt]="startDate" [min]="minDate"></mat-datepicker>
+                            <mat-error *ngIf="birthdate?.invalid && (birthdate?.dirty || birthdate?.touched)">Birth Date is required.</mat-error>
+                        </mat-form-field>
+                        <mat-form-field class="form-group">
+                            <input matInput type="email" placeholder="Email" formControlName="email">
+                            <mat-error *ngIf="email?.invalid && (email?.dirty || email?.touched)">Invalid email format.</mat-error>
+                        </mat-form-field>
+                        <div>
+                            <button [disabled]="!birthdate?.value" mat-button matStepperNext>Next</button>
+                        </div>
+                    </form>     
+                </mat-step>
+                <mat-step [stepControl]="secondFormGroup">
+                    <form [formGroup]="secondFormGroup" class="address-info">
+                        <ng-template matStepLabel>Your Address</ng-template>
+                        <mat-form-field class="form-group">
+                            <input matInput placeholder="Address" formControlName="address">
+                            <mat-error *ngIf="address?.invalid && (address?.dirty || address?.touched)">Address is required.</mat-error>
+                        </mat-form-field>
+                        <mat-form-field class="form-group">
+                            <input matInput placeholder="City" formControlName="city">
+                            <mat-error *ngIf="city?.invalid && (city?.dirty || city?.touched)">City is required.</mat-error>
+                        </mat-form-field>
+                        <mat-form-field class="form-group">
+                            <input matInput placeholder="Country" formControlName="country">
+                            <mat-error *ngIf="country?.invalid && (country?.dirty || country?.touched)">Country is required.</mat-error>
+                        </mat-form-field>
+                        <div>
+                            <button mat-button matStepperNext>Next</button>
+                        </div>
+                    </form>
+                </mat-step>
+                <mat-step>
+                    <form [formGroup]="thirdFormGroup" class="address-info" (ngSubmit)="onSubmit()">
+                        <ng-template matStepLabel>We want to get to know you better</ng-template>
+                        <div class="color-seats">
+                            <mat-form-field class="form-group">
+                                <mat-label>Favorite Color</mat-label>
+                                <input  id="colorPicker" matInput type="color" placeholder="Favorite Color" formControlName="favoriteColor">
+                                <mat-error *ngIf="favoriteColor?.invalid && (favoriteColor?.dirty || favoriteColor?.touched)">Favorite Color is required.</mat-error>
+                            </mat-form-field>
+                            <mat-form-field class="form-group">
+                                <input matInput type="number" placeholder="Car seats" formControlName="seats">
+                                <mat-error *ngIf="seats?.invalid && (seats?.dirty || seats?.touched)">Required Amount of Seats is required.</mat-error>
+                            </mat-form-field>
+                        </div>
+                        
+                        <mat-form-field class="form-group">
+                            <mat-select placeholder="Motor Type" formControlName="motorType">
+                            <mat-option value="Electric">Electric</mat-option>
+                            <mat-option value="Fuel">Fuel</mat-option>
+                            </mat-select>
+                            <mat-error *ngIf="motorType?.invalid && (motorType?.dirty || motorType?.touched)">Motor Type is required.</mat-error>
+                        </mat-form-field>
+                        <div class="form-group">
+                            <h3>Let us learn about your hobbies:</h3>
+                            <div formArrayName="hobbies">
+                            <div *ngFor="let hobby of hobbies?.controls; let i = index" [formGroupName]="i" class="hobby-group" class="hobby">
+                                <mat-form-field>
+                                <input matInput placeholder="Hobby {{ i + 1 }}" formControlName="hobby">
+                                </mat-form-field>
+                                <button mat-icon-button color="warn" (click)="removeHobby(i)">
+                                    <mat-icon>remove</mat-icon>
+                                </button>
+                            </div>
+                            </div>
+                            <div class="plus">
+                                <button mat-icon-button color="primary" aria-label="Example icon button with a home icon" (click)="addHobby()">
+                                    <mat-icon >add</mat-icon>
+                                </button>
+                            </div>
+                        </div>
+                        <button mat-raised-button color="primary" type="submit" [disabled]="!thirdFormGroup.valid || hobbies.length===0">Send</button>       
+                    </form>    
+                </mat-step>
+            </mat-stepper>
+        </div>
+        <div *ngIf="isSubmitted">
+            <h2>Thank you for Applying to WeCar!</h2>
+            <p>
+                A representative will be in touch with you shortly by mail.
+                We will get back to you as soon as possible.
+            </p>
+        </div>
+    </mat-card>
+</div>
+
+  

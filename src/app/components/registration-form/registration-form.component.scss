@@ -1,0 +1,49 @@
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;  
+    background-color: lightblue;
+
+    .main {
+        padding: 20px;
+       
+        .personal-info {
+            display: flex;
+            flex-direction: column;
+            padding-top: 20px;
+    
+        }
+        .address-info {
+            display: flex;
+            flex-direction: column;
+            padding-top: 20px;
+        }
+        
+        .color-seats {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+    
+            mat-form-field {
+                width:120px;
+            }
+        }
+        .hobby {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            button{
+                margin-left: 10px;
+            }
+    
+           
+        }
+        .plus{
+            display: flex;
+            flex-direction: row-reverse;
+            margin-bottom: 10px;
+        }
+        
+    }
+}

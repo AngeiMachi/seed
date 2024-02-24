@@ -1,0 +1,28 @@
+<mat-card class="coversion-rate-card">
+    <mat-card-body>
+       Conversion rate is {{conversionRatePercentage===0 ?0 :conversionRatePercentage || 100 }}%
+    </mat-card-body>
+</mat-card>
+<div class="container">
+    <mat-card>
+        <mat-card-body>
+           <app-most-picked-engine [clients]="data"></app-most-picked-engine>
+        </mat-card-body>
+    </mat-card>
+    <mat-card>
+        <mat-card-body>
+            <app-most-picked-colors [clients]="data"></app-most-picked-colors>
+        </mat-card-body>
+    </mat-card>
+    <mat-card>
+        <mat-card-body>
+            <app-most-common-hobbies [clients]="data" ></app-most-common-hobbies>
+        </mat-card-body>
+    </mat-card>
+    <mat-card>
+        <mat-card-body>
+            <app-most-picked-city  [clients]="data"></app-most-picked-city>
+        </mat-card-body>
+    </mat-card>
+</div>
+  

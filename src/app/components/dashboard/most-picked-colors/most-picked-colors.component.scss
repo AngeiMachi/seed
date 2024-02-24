@@ -1,0 +1,12 @@
+.containter {
+    width: 100%;
+    margin: 0 auto;
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+    padding: 20px;
+
+    .chart {
+        width: 100%;
+    }
+}

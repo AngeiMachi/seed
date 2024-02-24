@@ -1,0 +1,24 @@
+<div class="containter">
+    <div>
+        <h1>Most picked colors by age</h1>
+    </div>
+    <mat-form-field>
+        <mat-label>Select age</mat-label>
+        <select matNativeControl required  (change)="onSelectAge($event.target.value)">
+          <option *ngFor="let age of ages" [value]="age">{{age}}</option>
+        </select>
+    </mat-form-field>
+  
+        <ngx-charts-bar-vertical class="chart"  
+        [view]="view"
+        [scheme]="colorScheme"
+        [results]="colorCounts"
+        [gradient]="gradient"
+        [xAxis]="showXAxis"
+        [yAxis]="showYAxis"
+        [showXAxisLabel]="showXAxisLabel"
+        [xAxisLabel]="'Color'"
+        [yAxisLabel]="'Count'"
+        >
+      </ngx-charts-bar-vertical>
+</div>

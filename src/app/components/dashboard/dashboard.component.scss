@@ -1,0 +1,20 @@
+.coversion-rate-card {
+    padding: 10px;
+}
+.container {
+    
+    display: grid; 
+    grid-template-columns: 1fr 1fr; 
+    grid-template-rows: 1fr 1fr; 
+    gap: 20px ; 
+    padding: 20px; 
+    grid-template-areas: 
+      ". ."
+      ". ."; 
+      @media screen and (max-width: 720px) {
+        display: block; 
+        mat-card {
+            margin-bottom: 20px; // Add margin between cards
+          }
+      }
+  }
